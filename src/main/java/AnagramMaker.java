@@ -2,23 +2,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-class AnagramMaker {
+public class AnagramMaker {
 
     public String revers(String input) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         ArrayList<String> separated = separate(input);
-        for (int i = 0; i < separated.size(); i++) { // TODO: use foreach here
-            output += reverseWord(separated.get(i)) + " "; // TODO: use StringBuilder here. Why?
+        try { for (String word : separated) {
+            output.append(reverseWord(word) + " ");
         }
-        return output.trim();
+        return output.substring(0, output.length() - 1);} catch (Exception ex) {return null;}
     }
 
-    private ArrayList<String> separate(String input) {
-        ArrayList<String> inputArray = new ArrayList<>();
-        for (String word : input.split(" ")) { // TODO: maybe foreach ?
-            inputArray.add(word);
+    private ArrayList<String> separate (String input) {
+        ArrayList<String> inputWordsArray = new ArrayList<>();
+        try {  for (String word : input.split(" ")) {
+            inputWordsArray.add(word);
         }
-        return inputArray;
+        return inputWordsArray;} catch (Exception ex) {return null;}
     }
 
     private String reverseWord(String input) {
